@@ -5,7 +5,7 @@ pipeline {
         PYTHON_VERSION = "3.12"
         VENV_DIR = "venv"
         MLFLOW_TRACKING_URI = "http://127.0.0.1:5000"
-        DOCKER_REGISTRY = "yourdockerhubusername"
+        DOCKER_REGISTRY = "sundarp1985"
         DOCKER_IMAGE = "lung-disease-api"
         K8S_NAMESPACE = "mlops"
     }
