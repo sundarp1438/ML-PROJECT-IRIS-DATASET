@@ -1,0 +1,16 @@
+artifact_uri: file:///C:/Users/user/OneDrive%20-%20GTR%20TeK%20LLC/Desktop/MLOPS/Project1/my_analysis/src/stages/mlruns/559343642005570466/a232ecea8063490fa812fdd5a9560094/artifacts
+deleted_time: 1741931335857
+end_time: 1741929814861
+entry_point_name: ''
+experiment_id: '559343642005570466'
+lifecycle_stage: deleted
+run_id: a232ecea8063490fa812fdd5a9560094
+run_name: gaudy-seal-891
+run_uuid: a232ecea8063490fa812fdd5a9560094
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1741929814528
+status: 4
+tags: []
+user_id: user

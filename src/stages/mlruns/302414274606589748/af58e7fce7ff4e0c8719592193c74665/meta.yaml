@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/user/OneDrive%20-%20GTR%20TeK%20LLC/Desktop/MLOPS/Project1/my_analysis/src/stages/mlruns/302414274606589748/af58e7fce7ff4e0c8719592193c74665/artifacts
+end_time: 1741935924786
+entry_point_name: ''
+experiment_id: '302414274606589748'
+lifecycle_stage: active
+run_id: af58e7fce7ff4e0c8719592193c74665
+run_name: popular-squirrel-643
+run_uuid: af58e7fce7ff4e0c8719592193c74665
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1741935924197
+status: 3
+tags: []
+user_id: user

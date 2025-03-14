@@ -1,0 +1,6 @@
+artifact_location: file:///c:/Users/user/OneDrive%20-%20GTR%20TeK%20LLC/Desktop/MLOPS/Project1/my_analysis/src/stages/mlruns/302414274606589748
+creation_time: 1741935921786
+experiment_id: '302414274606589748'
+last_update_time: 1741935921786
+lifecycle_stage: active
+name: Iris Data Drift Monitoring
