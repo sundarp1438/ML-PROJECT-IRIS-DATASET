@@ -1,0 +1,132 @@
+schema: '2.0'
+stages:
+  data_load:
+    cmd: python src/stages/data_load.py --config=params.yaml
+    deps:
+    - path: src/stages/data_load.py
+      hash: md5
+      md5: 8e7dc540264a9d4dd65669a45ff8a8cc
+      size: 782
+    params:
+      params.yaml:
+        base:
+          random_state: 42
+        data_load:
+          dataset_path: data/raw/iris.csv
+    outs:
+    - path: data/raw/iris.csv
+      hash: md5
+      md5: 500a0acbd112b7c512929eac892f9864
+      size: 4009
+  featurize:
+    cmd: python src/stages/featurize.py --config=params.yaml
+    deps:
+    - path: data/raw/iris.csv
+      hash: md5
+      md5: 500a0acbd112b7c512929eac892f9864
+      size: 4009
+    - path: src/stages/featurize.py
+      hash: md5
+      md5: 4e03f278007f433454b6fc2473036c49
+      size: 982
+    params:
+      params.yaml:
+        base:
+          random_state: 42
+        data_load:
+          dataset_path: data/raw/iris.csv
+        featurize:
+          processed_path: data/processed/featured_iris.csv
+          target_column: species
+    outs:
+    - path: data/processed/featured_iris.csv
+      hash: md5
+      md5: 8f53defaed56654f35268b4e707098e8
+      size: 2909
+  data_split:
+    cmd: python src/stages/data_split.py --config=params.yaml
+    deps:
+    - path: data/processed/featured_iris.csv
+      hash: md5
+      md5: 8f53defaed56654f35268b4e707098e8
+      size: 2909
+    - path: src/stages/data_split.py
+      hash: md5
+      md5: eab493939d23d9317996f74090a36692
+      size: 1287
+    params:
+      params.yaml:
+        base:
+          random_state: 42
+        data_split:
+          test_size: 0.2
+          trainset_path: data/processed/train_iris.csv
+          testset_path: data/processed/test_iris.csv
+        featurize:
+          processed_path: data/processed/featured_iris.csv
+          target_column: species
+    outs:
+    - path: data/processed/test_iris.csv
+      hash: md5
+      md5: 05c2353603fcbea24e32bd21657832d4
+      size: 629
+    - path: data/processed/train_iris.csv
+      hash: md5
+      md5: 9e616237e7822500fc7e24ebaca3a5cc
+      size: 2339
+  train:
+    cmd: python src/stages/train.py --config=params.yaml
+    deps:
+    - path: data/processed/train_iris.csv
+      hash: md5
+      md5: 9e616237e7822500fc7e24ebaca3a5cc
+      size: 2339
+    - path: src/stages/train.py
+      hash: md5
+      md5: 0ed6c67be3666733d58586e644ced3d0
+      size: 1172
+    params:
+      params.yaml:
+        base:
+          random_state: 42
+        data_split.trainset_path: data/processed/train_iris.csv
+        featurize.target_column: species
+        train:
+          model_path: models/model.joblib
+    outs:
+    - path: models/model.joblib
+      hash: md5
+      md5: a5269f75dd605523ad5779a73b8b0816
+      size: 187265
+  evaluate:
+    cmd: python src/stages/evaluate.py --config=params.yaml
+    deps:
+    - path: data/processed/test_iris.csv
+      hash: md5
+      md5: 05c2353603fcbea24e32bd21657832d4
+      size: 629
+    - path: models/model.joblib
+      hash: md5
+      md5: a5269f75dd605523ad5779a73b8b0816
+      size: 187265
+    - path: src/stages/evaluate.py
+      hash: md5
+      md5: d4623f081cfe7fd8686fd64a36f31b89
+      size: 2302
+    params:
+      params.yaml:
+        base:
+          random_state: 42
+        data_split.testset_path: data/processed/test_iris.csv
+        evaluate:
+          metrics_path: reports/metrics.json
+        featurize.target_column: species
+    outs:
+    - path: reports/confusion_matrix.png
+      hash: md5
+      md5: 56d401970ef556c3981a159da6acf662
+      size: 13144
+    - path: reports/metrics.json
+      hash: md5
+      md5: e4a5aa1b41cf6a020ccd421c971fd700
+      size: 74

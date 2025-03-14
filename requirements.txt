@@ -18,5 +18,6 @@ jsonpatch<=2.0
 requests-toolbelt<=2.0.0
 zstandard<=0.24.0
 pydantic-settings<=3.0.0
+seaborn>=0.13.1
 -e .
 # evidently @ git+https://github.com/evidentlyai/evidently.git
